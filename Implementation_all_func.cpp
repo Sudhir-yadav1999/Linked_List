@@ -90,6 +90,38 @@ void Insertion_at_end()
       temp->next=newnode;
   }
   
+  void delete_at_begin()
+  {
+      temp=head;
+      head=head->next;
+      temp->next=NULL;
+      
+  }
+  
+  void delete_at_end()
+  {
+      temp=head;
+      while(temp->next!=tail)
+      {
+        temp=temp->next;  
+      }
+      temp->next=NULL;
+      tail=temp;
+      
+  }
+  void delete_at_specific(int pos)
+  {
+      temp=head;
+      
+      for(int i=0;i<pos-1;i++)
+      {
+          temp=temp->next;
+      }
+      temp->next=temp->next->next;
+      
+  }
+  
+  
 
 };
 int main()
@@ -104,7 +136,8 @@ int main()
     do{ 
     int n;
     cout<<"Enter the operation you want to perform in the linked list :"<<endl;
-    cout<<"1)push::: 2)Display::: 3)Insertion_at_beggining:::  4)insertion_at_specific_pos:::  5)Insertion_at_end::: ";
+    cout<<"1)push::: 2)Display::: 3)Insertion_at_beggining:::  4)insertion_at_specific_pos:::  5)Insertion_at_end::: "<<endl;
+    cout<<"6)delete_at_begin::: 7)delete_at_end:::  8)delete_at_specific::: ";
     cin>>n;
     switch(n)
     {
@@ -130,6 +163,23 @@ int main()
         case 5:
            l1.Insertion_at_end();
            break;
+        case 6:
+           l1.delete_at_begin();
+           break;
+           
+        case 7:
+            
+           l1.delete_at_end();
+           break;
+           
+        case 8:
+            int ps;
+            cout<<"Enter the position of deletion :"<<endl;
+            cin>>ps;
+           l1.delete_at_specific(ps);
+           break;
+           
+           
         default:
             cout<<"Wrong key is pressed :"<<endl;
     }
