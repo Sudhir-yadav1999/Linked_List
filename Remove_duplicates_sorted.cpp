@@ -8,17 +8,16 @@ void removeDuplicates(struct Node* head)
     
   struct Node *temp=head;
   struct Node *nex=head;
-  struct Node *tt=head;
   
   while(temp!=NULL)
   {
       
       if(temp->data == temp->next->data)
       {
-          
-          tt=tt->next;
-          temp->next=temp->next->next;
-          tt->next=NULL;
+        
+              nex=temp->next->next;
+              delete(temp->next);
+             temp->next=nex;
           
       }
       else
@@ -43,6 +42,7 @@ void removeDuplicates(Node* head)
     Node* temp = head;
     while (temp) {
         if (track.find(temp->data) == track.end()) {
+            //If value is not present then display 
             cout << temp->data << " ";
         }
         track[temp->data] = true;
